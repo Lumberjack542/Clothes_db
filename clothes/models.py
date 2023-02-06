@@ -22,3 +22,11 @@ class Shoes(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+
+class Wardrobe(models.Model):
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+    what_a_clothes = models.CharField(max_length=120)
+    image = models.ImageField(upload_to='media/image')
+    owner = models.ForeignKey(user.models.CustomUser, on_delete=models.CASCADE, null=True)
+
