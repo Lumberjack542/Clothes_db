@@ -29,4 +29,6 @@ class Wardrobe(models.Model):
     what_a_clothes = models.CharField(max_length=120)
     image = models.ImageField(upload_to='media/image')
     owner = models.ForeignKey(user.models.CustomUser, on_delete=models.CASCADE, null=True)
-
+    
+    def __str__(self):
+        return self.title 

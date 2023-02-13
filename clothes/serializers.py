@@ -22,3 +22,14 @@ class WardrobeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wardrobe
         fields = '__all__'
+
+
+class WardrobeCreateSerializer(serializers.ModelSerializer):
+    owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    
+    class Meta:
+        model = Wardrobe
+        fields = '__all__'
+
+            
+    

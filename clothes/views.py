@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from .serializers import ShoesSerializer, ShoesCreateSerializer, WardrobeSerializer
+from .serializers import ShoesSerializer, ShoesCreateSerializer, WardrobeSerializer, WardrobeCreateSerializer
 from .models import Shoes, Wardrobe
 # Create your views here.
 
@@ -21,6 +21,13 @@ class WardrobeApiView(ModelViewSet):
     queryset = Wardrobe.objects.all()
     serializer_class = WardrobeSerializer
 
+    def get_serializer_class(self):
+        if self.action in ['update', 'create']:
+            self.serializer_class = WardrobeCreateSerializer
+        else:
+            self.serializer_class = WardrobeSerializer
+
+        return self.serializer_class
 
 
 
